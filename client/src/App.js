@@ -1,23 +1,25 @@
-import logo from './logo.svg';
 import './App.css';
+import { Navbar, Card } from './components';
+import React, { useEffect } from 'react';
+import { actionFetchMovie } from './stores/actions';
+import { useDispatch, useSelector } from 'react-redux';
 
 function App() {
+  const dispatch = useDispatch();
+  const movies = useSelector((state) => state.movies);
+
+  useEffect(() => {
+    dispatch(actionFetchMovie())
+  }, [])
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navbar />
+      <div className="container d-flex justify-content-between flex-wrap mt-2">
+        { movies.map((el, i) => (
+          <Card key={i} movie={el} />
+        )) }
+      </div>
     </div>
   );
 }
