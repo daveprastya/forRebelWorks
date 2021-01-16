@@ -1,8 +1,9 @@
 import './App.css';
-import { Navbar, Card } from './components';
+import { Navbar, Card, MovieDetail } from './components';
 import React, { useEffect } from 'react';
 import { actionFetchMovie } from './stores/actions';
 import { useDispatch, useSelector } from 'react-redux';
+import { Switch, Route } from 'react-router-dom';
 
 function App() {
   const dispatch = useDispatch();
@@ -16,9 +17,16 @@ function App() {
     <div className="App">
       <Navbar />
       <div className="container d-flex justify-content-between flex-wrap mt-2">
-        { movies.map((el, i) => (
-          <Card key={i} movie={el} />
-        )) }
+        <Switch>
+          <Route exact path="/">
+            { movies.map((el, i) => (
+              <Card key={i} movie={el} />
+            )) }
+          </Route>
+          <Route path="/:id">
+            <MovieDetail />
+          </Route>
+        </Switch>
       </div>
     </div>
   );
