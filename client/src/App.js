@@ -16,7 +16,9 @@ function App() {
   }, [])
 
   const loadMoreFunction = () => {
-    dispatch(fetchMoreMovies(page))
+    setTimeout(()=>{
+      dispatch(fetchMoreMovies(page))
+    }, 2000)
   }
 
   return (
@@ -30,7 +32,17 @@ function App() {
               loadMore={loadMoreFunction}
               hasMore={true}
               loader={(
-                <h1>loading heula.....</h1>
+                <div className="d-flex justify-content-center" style={{paddingLeft: '500px'}}>
+                  <div className="css-spinner clickable" onclick="lda.css.show('facebook')">
+                    <div className="lds-facebook">
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                    </div>
+                    <div className="name"> <i className="i-html"></i>
+                    </div>
+                  </div>
+                </div>
               )}
               className="d-flex justify-content-between flex-wrap"
             >
