@@ -36,3 +36,22 @@
     transform: rotate(360deg);
   }
 }
+
+.card:hover{
+  transform: scale(1.05);
+}
+
+/* body {
+  background-image: url('./media/background.jpg');
+  background-repeat:repeat-x;
+} */
+
+.navbar{
+  opacity: 0.5;
+}
+
+.logoText{
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-weight: bold;
+  opacity: 2;
+}

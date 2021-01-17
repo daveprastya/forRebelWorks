@@ -25,7 +25,7 @@ export default function MovieDetail () {
  
   return (
     <div>
-      <div className="d-flex justify-content-between shadow">
+      <div className="d-flex justify-content-between shadow bg-light">
         <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} className="posterDetail" style={{width : '18rem'}} alt="..." />
         <div className="container text-start" style={{width : '100%'}}>
           <h1>{movie.title} ({getYear(movie.release_date)})</h1>
