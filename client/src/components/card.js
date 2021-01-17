@@ -12,27 +12,27 @@ export default function card (props) {
   }
 
   const customTitle = (title) => {
-    let tempTitle = title.split(' ');
+    let newTitle = '';
+    for(let i = 0; i < title.length; i++){
+      if(title[i] != '%'){
+        newTitle += title[i];
+      }
+    }
+    let tempTitle = newTitle.split(' ');
     if(tempTitle.length > 1){
       return tempTitle.join('-');
     } else {
-      return title;
+      return newTitle;
     }
   }
 
   return (
     <div className="card mb-2 shadow rounded" style={{ width : "17rem"}}>
-      <Link to={{
-        pathname : `/${movie.id}-${customTitle(movie.title)}`,
-        customProps : movie
-      }}>
+      <Link to={`/${movie.id}-${customTitle(movie.title)}`}>
         <img src={imgUrl} className="card-img-top" alt="..." />
       </Link>
       <div className="card-body">
-        <Link to={{
-          pathname : `/${movie.id}`,
-          customProps : movie
-        }} 
+        <Link to={`/${movie.id}`} 
         className="text-dark" 
         style={{textDecoration : "none"}}
         >

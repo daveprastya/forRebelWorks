@@ -1,6 +1,6 @@
-export default function fetchMovies () {
+export default function fetchMoreMovies (page) {
   return (dispatch) => {
-    fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=5c7850e05a3db3bca90aeb2a017f73b6&language=en-US&page=1`)
+    fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=5c7850e05a3db3bca90aeb2a017f73b6&language=en-US&page=${page}`)
       .then((response) => {
         if (response.ok) {
           return response.json();
@@ -9,7 +9,7 @@ export default function fetchMovies () {
         }
       })
       .then((data) => {
-        dispatch( { type: 'FETCH_MOVIES', payload : data.results } )
+        dispatch( { type: 'FETCH_MORE', payload : data.results } )
       })
       .catch((err) => console.log(err))
   }
